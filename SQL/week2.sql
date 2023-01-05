@@ -45,3 +45,11 @@ FROM ((trucks
 LEFT OUTER JOIN truck_menu_items ON trucks.id=truck_menu_items.truck_id)
 LEFT OUTER JOIN menu_items ON truck_menu_items.menu_item_id=menu_items.id)
 GROUP BY trucks.name
+
+----------------------------------------------------------------
+
+SELECT t.name, AVG(tmi.price) AS total_price
+FROM trucks
+LEFT OUTER JOIN tmi ON t.id=tmi.truck_id
+LEFT OUTER JOIN menu_items ON tmi.menu_item.id
+GROUP BY t.name
